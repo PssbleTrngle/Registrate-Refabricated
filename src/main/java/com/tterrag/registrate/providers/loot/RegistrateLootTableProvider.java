@@ -67,10 +67,11 @@ public class RegistrateLootTableProvider extends LootTableProvider implements Re
 
     private CompletableFuture<HolderLookup.Provider> provider;
 
-    public RegistrateLootTableProvider(AbstractRegistrate<?> parent, PackOutput packOutput, CompletableFuture<HolderLookup.Provider> provider) {
-        super(packOutput, Set.of(), ((LootTableProviderAccessor) VanillaLootTableProvider.create(packOutput, provider)).getSubProviders(), provider);
+    public RegistrateLootTableProvider(AbstractRegistrate<?> parent, FabricDataOutput packOutput, CompletableFuture<HolderLookup.Provider> provider) {
+        super(packOutput, Set.of(), List.of(), provider);
         this.parent = parent;
         this.provider = provider;
+        ((LootTableProviderAccessor) this).setSubProviders(getTables(packOutput));
     }
 
     public HolderLookup.Provider getProvider(){

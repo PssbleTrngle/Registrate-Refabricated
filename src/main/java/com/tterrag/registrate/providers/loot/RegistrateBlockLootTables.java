@@ -8,6 +8,7 @@ import javax.annotation.processing.Generated;
 import com.tterrag.registrate.AbstractRegistrate;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -25,12 +26,12 @@ import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-public class RegistrateBlockLootTables extends VanillaBlockLoot implements RegistrateLootTables {
+public class RegistrateBlockLootTables extends FabricBlockLootTableProvider implements RegistrateLootTables {
     private final AbstractRegistrate<?> parent;
     private final Consumer<RegistrateBlockLootTables> callback;
 
     public RegistrateBlockLootTables(HolderLookup.Provider provider, AbstractRegistrate<?> parent, Consumer<RegistrateBlockLootTables> callback, FabricDataOutput output) {
-        super(provider);
+        super(output, CompletableFuture.completedFuture(provider));
         this.parent = parent;
         this.callback = callback;
     }
