@@ -322,6 +322,11 @@ public class RegistrateRecipeProvider extends FabricRecipeProvider implements Re
             .save(this, safeId(result.get()));
     }
 
+    @Override
+    public ResourceLocation getRecipeIdentifier(ResourceLocation identifier) {
+        return super.getRecipeIdentifier(identifier);
+    }
+
     // @formatter:off
     // GENERATED START - DO NOT EDIT BELOW THIS LINE
 
