@@ -42,6 +42,7 @@ import java.util.function.Function;
 public interface ProviderType<T extends RegistrateProvider> {
 
     // SERVER DATA
+    ProviderType<RegistrateDatapackProvider> DYNAMIC = registerServerData("dynamic", RegistrateDatapackProvider::new);
     ProviderType<RegistrateRecipeProvider> RECIPE = registerServerData("recipe", RegistrateRecipeProvider::new);
     ProviderType<RegistrateAdvancementProvider> ADVANCEMENT = registerServerData("advancement", RegistrateAdvancementProvider::new);
     ProviderType<RegistrateLootTableProvider> LOOT = registerServerData("loot", RegistrateLootTableProvider::new);

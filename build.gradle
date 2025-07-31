@@ -35,10 +35,15 @@ dependencies {
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}")
     modApi(include(fabricApi.module("fabric-data-generation-api-v1", project.fabric_version))) // include datagen api
 
-    for (String module in porting_lib_modules.split(",")) {
-        modApi(include("io.github.fabricators_of_create.Porting-Lib:$module:$porting_lib_version")) { exclude(group: "io.vram") }
+    def portingLib = { String module, String version = porting_lib_version ->
+        modApi(include("io.github.fabricators_of_create.Porting-Lib:$module:$version")) { exclude(group: "io.vram") }
     }
-    
+
+    portingLib("tags")
+    portingLib("models")
+    portingLib("data")
+    portingLib("lazy_registration", "3.1.0-beta.54+1.21.1")
+
     compileOnly(annotationProcessor("org.projectlombok:lombok:1.18.34"))
 
     implementation(include("com.google.code.findbugs:jsr305:3.0.2"))
