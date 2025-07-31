@@ -164,5 +164,17 @@ publishing {
 
     repositories {
         mavenLocal()
+        def nexusToken = System.getenv("NEXUS_TOKEN")
+        def nexusUser = System.getenv("NEXUS_USER")
+
+        if (nexusToken != null && nexusUser != null) {
+            maven {
+                url = uri("https://registry.somethingcatchy.net/repository/maven-snapshots/")
+                credentials {
+                    username = nexusUser
+                    password = nexusToken
+                }
+            }
+        }
     }
 }
