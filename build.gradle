@@ -169,7 +169,7 @@ publishing {
 
         if (nexusToken != null && nexusUser != null) {
             maven {
-                url = uri("https://registry.somethingcatchy.net/repository/maven-snapshots/")
+                url = uri("https://registry.somethingcatchy.net/repository/maven-releases/")
                 credentials {
                     username = nexusUser
                     password = nexusToken
