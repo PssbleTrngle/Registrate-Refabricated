@@ -43,7 +43,7 @@ dependencies {
     portingLib("tags")
     portingLib("models")
     portingLib("data")
-    portingLib("lazy_registration")
+    portingLib("registry")
 
     compileOnly(annotationProcessor("org.projectlombok:lombok:1.18.34"))
 
