@@ -265,7 +265,7 @@ public class ItemBuilder<T extends Item, P> extends AbstractBuilder<Item, T, P, 
      * @param tick time in ticks for this item to burn in furnace.
      */
     public ItemBuilder<T, P> burnTime(int tick) {
-        FuelRegistry.INSTANCE.add(get().get(), tick);
+        onRegister(value -> FuelRegistry.INSTANCE.add(value, tick));
         return this;
     }
 
@@ -274,7 +274,7 @@ public class ItemBuilder<T extends Item, P> extends AbstractBuilder<Item, T, P, 
      * @param chance chance for composter to increase one level when composting this item.
      */
     public ItemBuilder<T, P> compostable(float chance) {
-        CompostingChanceRegistry.INSTANCE.add(get().get(), chance);
+        onRegister(value -> CompostingChanceRegistry.INSTANCE.add(value, chance));
         return this;
     }
 
